@@ -2,7 +2,9 @@ import { GoDiffAdded } from "react-icons/go";
 import { GoEye } from "react-icons/go";
 import { Link } from "react-router-dom";
 
+// eslint-disable-next-line react/prop-types
 const Product = ({ item }) => {
+  // eslint-disable-next-line react/prop-types
   const { id, image, category, title, price } = item;
   return (
     <div>
