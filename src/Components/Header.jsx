@@ -8,7 +8,7 @@ const Header = () => {
     <header className="bg-red-300">
       <div>Header</div>
       <div
-        className="cursor-pointer flex relative"
+        className="cursor-pointer flex relative w-max"
         onClick={() => {
           setIsOpen(!isOpen);
         }}
