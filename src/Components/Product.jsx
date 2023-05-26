@@ -1,9 +1,12 @@
+import { useContext } from "react";
 import { GoDiffAdded } from "react-icons/go";
 import { GoEye } from "react-icons/go";
 import { Link } from "react-router-dom";
+import { CartContext } from "../Contexts/CartContext";
 
 // eslint-disable-next-line react/prop-types
 const Product = ({ item }) => {
+  const { addToCart } = useContext(CartContext);
   // eslint-disable-next-line react/prop-types
   const { id, image, category, title, price } = item;
   return (
@@ -21,7 +24,11 @@ const Product = ({ item }) => {
             ></img>
           </div>
           <div className="absolute top-6 -right-11 group-hover:right-5 p-2 flex flex-col items-center justify-center gap-y-2 opacity-0 group-hover:opacity-100 transition-all duration-300">
-            <button>
+            <button
+              onClick={() => {
+                addToCart(item, id);
+              }}
+            >
               <div className="flex justify-center items-center w-12 h-12 text-white bg-red-300">
                 <GoDiffAdded className="text-3xl" />
               </div>

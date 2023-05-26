@@ -4,7 +4,6 @@ import Product from "../Components/Product";
 
 const Home = () => {
   const { products } = useContext(ProductContext);
-  console.log(products);
   return (
     <div>
       <section className="py-16">

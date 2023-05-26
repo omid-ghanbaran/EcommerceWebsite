@@ -1,9 +1,11 @@
 import { useContext } from "react";
 import { SidebarContext } from "../Contexts/SidebarContext";
 import { BsFillForwardFill } from "react-icons/bs";
+import { CartContext } from "../Contexts/CartContext";
+import CartItem from "./CartItem";
 
 const Sidebar = () => {
-  // eslint-disable-next-line no-unused-vars
+  const { cart } = useContext(CartContext);
   const { isOpen, handleClose } = useContext(SidebarContext);
   return (
     <div
@@ -19,6 +21,11 @@ const Sidebar = () => {
         >
           <BsFillForwardFill className="text-2xl" />
         </div>
+      </div>
+      <div>
+        {cart.map((item) => {
+          return <CartItem item={item} key={item.id} />;
+        })}
       </div>
     </div>
   );
