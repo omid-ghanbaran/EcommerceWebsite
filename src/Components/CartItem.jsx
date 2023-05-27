@@ -1,8 +1,12 @@
 import { Link } from "react-router-dom";
-import { BsTrash, BsCaretDown, BsCaretUp } from "react-icons/bs";
+import { BsTrash } from "react-icons/bs";
+import { useContext } from "react";
+import { CartContext } from "../Contexts/CartContext";
 
 const CartItem = ({ item }) => {
   const { id, image, title, price, amount } = item;
+  const { removeFromCart, increaseAmount, decreaseAmount } =
+    useContext(CartContext);
   return (
     <div className="flex gap-x-4 py-2 border-b lg:px-1 w-full border-gray-200 font-light text-gray-500">
       <div className=" min-h-[150px] flex items-center gap-x-4 px-3">
@@ -18,20 +22,35 @@ const CartItem = ({ item }) => {
           >
             {title}
           </Link>
-          <div className="text-xl cursor-pointer">
+          <div
+            onClick={() => {
+              removeFromCart(id);
+            }}
+            className="text-xl cursor-pointer"
+          >
             <BsTrash className="hover:text-red-400 transition" />
           </div>
         </div>
         <div className="flex text-sm gap-x-2 h-[36px]">
           <div className="flex flex-1 max-w-[100px] items-center h-full border text-primary font-medium">
-            <div className="flex-1 flex justify-center h-full items-center cursor-pointer">
-              <BsCaretUp />
+            <div
+              onClick={() => {
+                decreaseAmount(id);
+              }}
+              className="flex-1 flex justify-center h-full items-center cursor-pointer text-xl"
+            >
+              -
             </div>
             <div className="h-full px-2 flex justify-center items-center">
               {amount}
             </div>
-            <div className="flex-1 flex justify-center h-full items-center cursor-pointer">
-              <BsCaretDown />
+            <div
+              onClick={() => {
+                increaseAmount(id);
+              }}
+              className="flex-1 flex justify-center h-full items-center cursor-pointer text-xl"
+            >
+              +
             </div>
           </div>
           <div className="flex flex-1 items-center justify-around font-medium text-primary">

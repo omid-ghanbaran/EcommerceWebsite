@@ -1,17 +1,18 @@
 import { useContext } from "react";
 import { SidebarContext } from "../Contexts/SidebarContext";
 import { BsFillForwardFill } from "react-icons/bs";
+import { AiOutlineClear } from "react-icons/ai";
 import { CartContext } from "../Contexts/CartContext";
 import CartItem from "./CartItem";
 
 const Sidebar = () => {
-  const { cart } = useContext(CartContext);
+  const { cart, clearCart } = useContext(CartContext);
   const { isOpen, handleClose } = useContext(SidebarContext);
   return (
     <div
       className={`${
         isOpen ? "right-0" : "-right-full"
-      } w-full bg-white h-full fixed top-0 shadow-2xl md:w-[35vw] xl:max-w-[30vw] transition-all duration-300 z-20 px-4 lg:px-[35px]`}
+      } w-full bg-white h-full fixed top-0 shadow-2xl md:w-[35vw] xl:max-w-[30vw] transition-all duration-300 z-20 px-4 lg:px-[35px] overflow-scroll`}
     >
       <div className="flex justify-between items-center py-6 border-b">
         <div className="font-semibold uppercase text-sm">Shoping Bag (0)</div>
@@ -26,6 +27,19 @@ const Sidebar = () => {
         {cart.map((item) => {
           return <CartItem item={item} key={item.id} />;
         })}
+      </div>
+      <div className="flex flex-col gap-y-3 py-3 mt-3 ">
+        <div className="flex justify-between w-full items-center">
+          <div className="uppercase font-semibold">
+            <span className="mr-2">total:</span>$ 1000
+          </div>
+          <div
+            onClick={clearCart}
+            className="cursor-pointer bg-red-200 w-12 h-12 flex text-2xl items-center justify-center"
+          >
+            <AiOutlineClear />
+          </div>
+        </div>
       </div>
     </div>
   );
