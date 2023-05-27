@@ -1,11 +1,25 @@
 /* eslint-disable react/prop-types */
-import { createContext, useState } from "react";
+import { createContext, useEffect, useState } from "react";
 
 export const CartContext = createContext();
 
 const CartProvider = ({ children }) => {
   const [cart, setCart] = useState([]);
   const [itemAmount, setItemAmount] = useState(0);
+  const [total, setTotal] = useState(0);
+
+  useEffect(() => {
+    const amount = cart.reduce((acc, cur) => {
+      return acc + cur.amount;
+    }, 0);
+    setItemAmount(amount);
+  }, [cart]);
+  useEffect(() => {
+    const totalPrice = cart.reduce((acc, cur) => {
+      return acc + cur.price * cur.amount;
+    }, 0);
+    setTotal(totalPrice);
+  }, [cart]);
 
   const removeFromCart = (id) => {
     const newCart = cart.filter((item) => {
@@ -67,6 +81,7 @@ const CartProvider = ({ children }) => {
         increaseAmount,
         decreaseAmount,
         itemAmount,
+        total,
       }}
     >
       {children}
