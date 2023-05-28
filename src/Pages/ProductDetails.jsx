@@ -12,6 +12,10 @@ const ProductDetails = () => {
   const product = products.find((item) => {
     return item.id === parseInt(id);
   });
+  const componentDidMount = () => {
+    window.scrollTo(0, 0);
+  };
+  componentDidMount();
 
   if (!product) {
     return (
