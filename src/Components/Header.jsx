@@ -17,7 +17,7 @@ const Header = () => {
   return (
     <header
       className={`${
-        isActive ? "bg-blue-200 shadow-lg " : "bg-green-200 py-1"
+        isActive ? "bg-white shadow-lg " : "bg-green-200 py-1"
       } fixed w-full z-10 transition-all`}
     >
       <div className="container mx-auto flex justify-between items-center h-full">

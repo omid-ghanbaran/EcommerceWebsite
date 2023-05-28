@@ -8,17 +8,17 @@ const CartItem = ({ item }) => {
   const { removeFromCart, increaseAmount, decreaseAmount } =
     useContext(CartContext);
   return (
-    <div className="flex gap-x-4 py-2 border-b lg:px-1 w-full border-gray-200 font-light text-gray-500">
-      <div className=" min-h-[150px] flex items-center gap-x-4 px-3">
+    <div className="flex gap-x-4 border-b lg:px-1 w-full border-gray-200 font-light text-gray-500">
+      <div className=" min-h-[110px] flex items-center gap-x-4 px-3">
         <Link to={`/product/${id}`}>
-          <img className="max-w-[80px]" src={image} alt={title} />
+          <img className="max-w-[60px]" src={image} alt={title} />
         </Link>
       </div>
       <div className="w-full flex flex-col justify-center">
         <div className="flex justify-between items-center mb-2">
           <Link
             to={`/product/${id}`}
-            className="text-sm uppercase font-medium max-w-[240px] text-primary hover:underline"
+            className="text-sm uppercase font-medium max-w-[200px] max-h-[36px] overflow-hidden text-primary hover:underline"
           >
             {title}
           </Link>
@@ -31,7 +31,7 @@ const CartItem = ({ item }) => {
             <BsTrash className="hover:text-red-400 transition" />
           </div>
         </div>
-        <div className="flex text-sm gap-x-2 h-[36px]">
+        <div className="flex text-sm gap-x-2 h-[26px]">
           <div className="flex flex-1 max-w-[100px] items-center h-full border text-primary font-medium">
             <div
               onClick={() => {
